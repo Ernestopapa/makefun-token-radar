@@ -1,0 +1,21 @@
+body { background: #0E0E0D; color: #e8e6e1; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+#stats-strip { display: flex; gap: 10px; }
+.tile { background: #161615; padding: 10px; border: 1px solid #2a2a28; }
+.yellow { color: #FFD207; }
+.green { color: #3fb97f; }
+.red { color: #e5484d; }
+footer { font-size: 0.8em; color: #9a978f; }
+
+#detail-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100vh;
+    background: #161615;
+    border-left: 1px solid #2a2a28;
+    display: none;
+    overflow-y: auto;
+    padding: 20px;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+}
