@@ -94,7 +94,7 @@ export function generateFarmSteps(p: Protocol, tvl: number, ageDays: number | nu
                 cat.includes('curator') || cat.includes('allocator') ? `Vote in the vault's governance or reallocate a small share between vaults.` :
                 cat.includes('rwa') ? `Claim any yield the position earns and redeposit it.` :
                 cat.includes('perpetual') || cat.includes('derivative') ? `Close the hedge and open a fresh one the following week.` :
-                `Use a second feature of ${p.name} — a vote, a second asset, or a second chain — at least once.`;
+                `Use a second feature of ${p.name}, a vote, a second asset, or a second chain, at least once.`;
 
   return [
     `Use a fresh wallet that holds only the funds you plan to farm, and keep its seed phrase offline. Cost: under $3 of gas for the first transaction. Time: 5 minutes.`,
@@ -102,6 +102,6 @@ export function generateFarmSteps(p: Protocol, tvl: number, ageDays: number | nu
     `${step3} Cost: about $2 of gas. Time: 10 minutes a week.`,
     `Make one qualifying action each week, such as a deposit, a borrow, a swap or a vote. Cost: about $2 of gas a week. Time: 10 minutes a week.`,
     `Hold the position for at least ${hold} days so the activity is counted in more than one snapshot. Cost: the $${capital} stays in the position. Time: ${hold} days.`,
-    `Before you withdraw, open the protocol's own points or rewards page and claim only from the link it publishes — never pay to claim — then write the wallet, the dates and every transaction in a farm log. Cost: no fee to check. Time: 15 minutes.`
+    `Before you withdraw, open the protocol's own points or rewards page and claim only from the link it publishes. Never pay to claim. Then write the wallet, the dates and every transaction in a farm log. Cost: no fee to check. Time: 15 minutes.`
   ];
 }
