@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { isRankable, calculateImpliedValue, generateFarmSteps } from './lib/model.ts';
 import { buildDossier } from './vendor/makefun-board.ts';
@@ -7,6 +8,10 @@ const inputDir = process.argv.includes('--input') ? process.argv[process.argv.in
 const outputDir = process.env.MAKEFUN_OUTPUT_DIR || '/output';
 
 const snapshotPath = inputDir.endsWith('.json') ? inputDir : join(inputDir, 'snapshot.json');
+if (!existsSync(snapshotPath)) {
+  process.stderr.write(`token radar: no snapshot at ${snapshotPath}: pass --input <snapshot.json|directory> or mount the sealed /input\n`);
+  process.exit(2);
+}
 const snapshot = JSON.parse(readFileSync(snapshotPath, 'utf8'));
 
 const asOf = snapshot.as_of;
@@ -78,7 +83,7 @@ writeFileSync(join(outputDir, 'board.json'), JSON.stringify({ rows: boardRows },
 writeFileSync(join(outputDir, 'data.js'), `window.RADAR=${JSON.stringify(outputData)};\n`);
 
 // Copy dashboard and screenshots
-const entryDir = process.cwd();
+const entryDir = fileURLToPath(new URL('.', import.meta.url));
 cpSync(join(entryDir, 'dashboard'), join(outputDir, 'dashboard'), { recursive: true });
 cpSync(join(entryDir, 'screenshots'), join(outputDir, 'screenshots'), { recursive: true });
 
