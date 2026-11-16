@@ -19,3 +19,5 @@ footer { font-size: 0.8em; color: #9a978f; }
     padding: 20px;
     box-shadow: -5px 0 15px rgba(0,0,0,0.5);
 }
+
+td, th { padding: 6px 14px; }
